@@ -1,4 +1,6 @@
 import express from 'express';
+import { connectMongo } from '../db'
+
 import * as bodyParser from 'body-parser';
 import router from '../routes';
 
@@ -8,27 +10,25 @@ class Server {
     constructor() {
         this.app = express();
         this.initializeMiddleware();
-        this.connectToTheDatabase();
     }
 
-    public listen() {
-        this.app.listen(3000, () => {
+    public start(): void {
+        connectMongo();
+        this.app.listen(3000, (): void => {
             console.log('Server is listening');
         })
     }
 
-    private initializeMiddleware() {
+    private bodyParser(): void {
         this.app.use(bodyParser.json());
-        this.app.use('/', router)
+        this.app.use(bodyParser.urlencoded({
+            extended: true,
+        }))
     }
 
-    private connectToTheDatabase() {
-        // const {
-        //     MONGO_USER,
-        //     MONGO_PASSWORD,
-        //     MONGO_PATH,
-        // } = process.env;
-        // mongoose.connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}${MONGO_PATH}`);
+    private initializeMiddleware(): void {
+        this.bodyParser();
+        this.app.use('/', router);
     }
 }
 

@@ -1,8 +1,10 @@
 import { Router } from 'express'
-import module from '../controllers/module';
+import configs from '../controllers/configs'
+import climate from '../controllers/climate'
 
 const router = Router();
 
-router.get('/connect', module.connect)
+router.get('/configs', configs.getConfigs);
+router.post('/climate-data', climate.data);
 
 export default router;
