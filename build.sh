@@ -6,4 +6,4 @@ os.system('npm install && tsc')
 shutil.rmtree('src')
 
 os.system('ren dist src')
-os.remove('backend/package-lock.json')
+os.remove('package-lock.json')
