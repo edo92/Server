@@ -6,6 +6,7 @@ import router from '../routes';
 
 class Server {
     public app = express.application;
+    private port = 3000;
 
     constructor() {
         this.app = express();
@@ -14,7 +15,7 @@ class Server {
 
     public start(): void {
         connectMongo();
-        this.app.listen(3000, (): void => {
+        this.app.listen(this.port, (): void => {
             console.log('Server is listening');
         })
     }

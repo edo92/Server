@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
 import * as models from './models';
+import actions from './actions';
 
 const connectMongo = () => {
-    const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/chatapp';
+    const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/projectx';
 
     mongoose.set('useCreateIndex', true);
     mongoose.set('useFindAndModify', true);
@@ -19,4 +20,4 @@ const connectMongo = () => {
     })
 }
 
-export { connectMongo, models }
+export { connectMongo, models, actions }

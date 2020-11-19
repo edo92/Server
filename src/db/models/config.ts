@@ -8,6 +8,16 @@ const ConfigSchema = new Schema({
         off: {
             type: String
         }
+    },
+    limits: {
+        temperature: {
+            min: Number,
+            max: Number
+        },
+        pressure: {
+            min: Number,
+            max: Number
+        }
     }
 })
 
