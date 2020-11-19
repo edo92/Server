@@ -2,7 +2,7 @@ import store from '../store';
 
 class Climate {
     public static data(req: any, res: any): void {
-        store.setState({ data: req.body });
+        store.setState({ climate: req.body.data });
         res.json();
     }
 
