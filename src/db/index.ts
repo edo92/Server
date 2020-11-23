@@ -11,7 +11,7 @@ const connectMongo = () => {
     const mdbConfig = {
         useNewUrlParser: true,
         useFindAndModify: true,
-        useCreateIndex: true
+        useCreateIndex: true,
     };
     mongoose.connect(MONGODB_URI, mdbConfig);
 
