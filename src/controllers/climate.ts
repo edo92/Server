@@ -1,9 +1,10 @@
 import store from '../store';
+import actons from '../db/actions';
 
 class Climate {
     public static data(req: any, res: any): void {
-        store.setState({ climate: req.body });
-        res.json();
+        actons.saveData(req.body);
+        res.json(req.body);
     }
 
     public static getData(_req: any, res: any): void {

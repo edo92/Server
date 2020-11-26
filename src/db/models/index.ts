@@ -1,5 +1,4 @@
-import Config from './config';
+import * as cloud from './cloud';
+import * as  local from './local';
 
-export {
-    Config
-}
+export { cloud, local };

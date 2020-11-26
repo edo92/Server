@@ -1,5 +1,8 @@
+interface IState {
+}
+
 class Store {
-    public state: object = {};
+    public state: IState = {};
 
     public setState(data: object): void {
         this.state = { ...this.state, ...data };

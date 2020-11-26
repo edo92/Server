@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose"
+import { Schema } from "mongoose"
 
 const ConfigSchema = new Schema({
     lighting: {
@@ -21,4 +21,4 @@ const ConfigSchema = new Schema({
     }
 })
 
-export default model("config", ConfigSchema)
+export default ConfigSchema;
