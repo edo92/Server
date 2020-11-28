@@ -1,15 +1,18 @@
+import express from 'express';
 import store from '../store';
-import actons from '../db/actions';
+import { climate } from '../db/actions';
 
 class Climate {
-    public static data(req: any, res: any): void {
-        actons.saveData(req.body);
-        res.json(req.body);
+    public static async receiveClimate(req: express.Request, res: express.Response) {
+        await climate.saveClimate(req.body); // Save to local db
+        store.setState({ climate: req.body }); // Save to store
+        
+        res.status(200).json({ ok: true });
     }
 
-    public static getData(_req: any, res: any): void {
-        res.json(store.getState());
+    public static sendClimate(_req: express.Request, res: express.Response): void {
+        res.status(200).json(store.getState());
     }
 }
 
-export default Climate
+export default Climate;

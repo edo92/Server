@@ -1,4 +1,6 @@
-import * as cloud from './cloud';
-import * as  local from './local';
+import configs from './configs';
+import climate from './climate';
 
-export { cloud, local };
+export {
+    climate, configs
+}

@@ -10,7 +10,7 @@ class Server {
 
   constructor() {
     this.app = express();
-    this.connectDatabases();
+    this.startDatabaseCluster();
     this.initializeMiddleware();
   }
 
@@ -26,10 +26,8 @@ class Server {
     this.app.use('/', router);
   }
 
-  private connectDatabases(): void {
-    const db = new Database();
-    // db.connectMognoLocal();
-    db.connectMongoCloud();
+  private startDatabaseCluster(): void {
+    Database.connect();
   }
 
   public start(): void {
