@@ -5,8 +5,8 @@ import { climate } from '../db/actions';
 class Climate {
     public static async receiveClimate(req: express.Request, res: express.Response) {
         await climate.saveClimate(req.body); // Save to local db
-        store.setState({ climate: req.body }); // Save to store
-        
+        store.setState({ climate: req.body }); // Update lastest data
+
         res.status(200).json({ ok: true });
     }
 

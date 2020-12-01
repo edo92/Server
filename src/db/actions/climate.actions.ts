@@ -1,6 +1,15 @@
 import { climate } from '../models';
 import { Time, Formatter } from '../../util';
 
+interface IdataObj {
+    data: number;
+    unit: string;
+}
+
+interface Idata {
+    [key: string]: IdataObj
+}
+
 
 class ClimateDB {
     public async getCurrentTable(date: string) {
@@ -27,8 +36,9 @@ class ClimateDB {
     }
 }
 
+
 class ClimateActions {
-    public static async saveClimate(data: object) {
+    public static async saveClimate(data: Idata) {
         const climate = new ClimateDB();
         const date = Time.currentDate();
 
@@ -44,9 +54,6 @@ class ClimateActions {
             climate.updateClimateTable(ctId, pkdata);
         else
             climate.createClimateTable(date, ordata);
-
-        const test = await climate.getCurrentTable(date);
-        console.log('testing---', test)
     }
 }
 
