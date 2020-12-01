@@ -1,8 +1,8 @@
 import os, subprocess
 import shutil
 
-os.system('npm install && tsc')
-
+os.system('npm install')
+os.system('tsc')
 shutil.rmtree('src')
 
 os.system('ren dist src')
