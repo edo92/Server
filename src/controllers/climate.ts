@@ -11,6 +11,7 @@ class Climate {
     }
 
     public static sendClimate(_req: express.Request, res: express.Response): void {
+        console.log('getstate', store.getState())
         res.status(200).json(store.getState());
     }
 }
